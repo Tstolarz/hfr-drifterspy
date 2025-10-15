@@ -243,6 +243,7 @@ The tool creates a timestamped output directory containing:
         ├── frame_002.png
         └── ...
 ```
+Images of the output can be seen in the example_fig_results folder of this repository.
 
 ## How It Works
 
