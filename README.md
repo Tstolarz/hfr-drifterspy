@@ -243,7 +243,10 @@ The tool creates a timestamped output directory containing:
         ├── frame_002.png
         └── ...
 ```
-Images of the output can be seen in the example_fig_results folder of this repository.
+
+**[View Example Output Gallery →](https://tstolarz.github.io/hfr-drifterspy/example_fig_results/)**
+
+Images of the output can be seen in the [example_fig_results folder](./example_fig_results) of this repository.
 
 ## How It Works
 
