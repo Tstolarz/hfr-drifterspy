@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HFR Drifter Comparison - Example Results</title>
+    <style>
+        :root {
+            --bg: #0f1419;
+            --fg: #e9eef3;
+            --muted: #9aa7b2;
+            --card: #1a1f26;
+            --border: #2d333b;
+            --accent: #67b8ff;
+            --hover: #3d8fd1;
+        }
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg: #f6f8fa;
+                --fg: #24292f;
+                --muted: #57606a;
+                --card: #ffffff;
+                --border: #d0d7de;
+                --accent: #0969da;
+                --hover: #0550ae;
+            }
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--fg);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+        }
+        header {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        .subtitle {
+            color: var(--muted);
+            font-size: 1rem;
+        }
+        .github-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .github-link:hover {
+            color: var(--hover);
+            text-decoration: underline;
+        }
+        main {
+            padding: 2rem 1rem;
+        }
+        .section {
+            margin-bottom: 3rem;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            cursor: pointer;
+            background: #000;
+        }
+        .card-title {
+            padding: 1rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .animation-note {
+            background: color-mix(in oklab, var(--accent) 15%, transparent);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .lightbox-close:hover {
+            color: var(--accent);
+        }
+        .lightbox-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>HFR Drifter Comparison - Example Results</h1>
+            <p class="subtitle">Drifter ID: 246400711 | Analysis Date: 2025-10-15T12</p>
+            <a href="https://github.com/Tstolarz/hfr-drifterspy" class="github-link" target="_blank">
+                View on GitHub →
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Totals Section -->
+        <section class="section">
+            <h2 class="section-title">Total Currents Analysis</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="246400711_2025_10_15T12_hfr_drifter_comparison/Totals/track_map.png"
+                         alt="Track Map"
+                         class="card-image"
+                         onclick="openLightbox(this)">
+                    <div class="card-title">Track Map</div>
+                </div>
+                <div class="card">
+                    <img src="246400711_2025_10_15T12_hfr_drifter_comparison/Totals/correlation_scatter.png"
+                         alt="Correlation Scatter"
+                         class="card-image"
+                         onclick="openLightbox(this)">
+                    <div class="card-title">Correlation Scatter</div>
+                </div>
+                <div class="card">
+                    <img src="246400711_2025_10_15T12_hfr_drifter_comparison/Totals/uv_timeseries.png"
+                         alt="UV Time Series"
+                         class="card-image"
+                         onclick="openLightbox(this)">
+                    <div class="card-title">UV Time Series</div>
+                </div>
+                <div class="card">
+                    <img src="246400711_2025_10_15T12_hfr_drifter_comparison/Totals/improved_uv_timeseries.png"
+                         alt="Improved UV Time Series"
+                         class="card-image"
+                         onclick="openLightbox(this)">
+                    <div class="card-title">Improved UV Time Series</div>
+                </div>
+                <div class="card">
+                    <img src="246400711_2025_10_15T12_hfr_drifter_comparison/Totals/current_roses.png"
+                         alt="Current Roses"
+                         class="card-image"
+                         onclick="openLightbox(this)">
+                    <div class="card-title">Current Roses</div>
+                </div>
+            </div>
+
+            <div class="animation-note">
+                <strong>Animation Frames:</strong> 61 frames available in
+                <code>Totals/animation_frames/</code> (frame_001.png through frame_061.png)
+            </div>
+        </section>
+
+        <!-- Radials Section -->
+        <section class="section">
+            <h2 class="section-title">Radial Analysis - HEMP</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="246400711_2025_10_15T12_hfr_drifter_comparison/Radials/HEMP/HEMP_track_map.png"
+                         alt="HEMP Track Map"
+                         class="card-image"
+                         onclick="openLightbox(this)">
+                    <div class="card-title">HEMP Track Map</div>
+                </div>
+                <div class="card">
+                    <img src="246400711_2025_10_15T12_hfr_drifter_comparison/Radials/HEMP/HEMP_correlation_scatter.png"
+                         alt="HEMP Correlation Scatter"
+                         class="card-image"
+                         onclick="openLightbox(this)">
+                    <div class="card-title">HEMP Correlation Scatter</div>
+                </div>
+                <div class="card">
+                    <img src="246400711_2025_10_15T12_hfr_drifter_comparison/Radials/HEMP/HEMP_velocity_timeseries.png"
+                         alt="HEMP Velocity Time Series"
+                         class="card-image"
+                         onclick="openLightbox(this)">
+                    <div class="card-title">HEMP Velocity Time Series</div>
+                </div>
+                <div class="card">
+                    <img src="246400711_2025_10_15T12_hfr_drifter_comparison/Radials/HEMP/HEMP_difference_timeseries.png"
+                         alt="HEMP Difference Time Series"
+                         class="card-image"
+                         onclick="openLightbox(this)">
+                    <div class="card-title">HEMP Difference Time Series</div>
+                </div>
+                <div class="card">
+                    <img src="246400711_2025_10_15T12_hfr_drifter_comparison/Radials/HEMP/HEMP_velocity_with_distance.png"
+                         alt="HEMP Velocity with Distance"
+                         class="card-image"
+                         onclick="openLightbox(this)">
+                    <div class="card-title">HEMP Velocity with Distance</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Generated from <a href="https://github.com/Tstolarz/hfr-drifterspy" target="_blank">hfr-drifterspy</a> repository</p>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" class="lightbox-content">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+
+    <script>
+        function openLightbox(img) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+
+            lightbox.classList.add('active');
+            lightboxImg.src = img.src;
+            caption.textContent = img.alt;
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
