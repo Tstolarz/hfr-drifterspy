@@ -31,7 +31,7 @@ oceans
 
 ### Installation
 
-Install required packages using pip:
+Install required packages using pip/conda/mamba:
 
 ```bash
 pip install numpy pandas xarray matplotlib cartopy pyproj windrose cmocean
